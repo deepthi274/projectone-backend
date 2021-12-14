@@ -1,0 +1,39 @@
+package com.project2.mediciERS;
+
+import static org.mockito.Mockito.when;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import com.project2.mediciERS.controller.Controller;
+import com.project2.mediciERS.entity.User;
+import com.project2.mediciERS.service.UserService;
+
+@WebMvcTest(Controller.class)
+public class UserControllerTest {
+	
+	@Autowired
+	private Controller controller;
+	
+	@Autowired
+	private MockMvc mockMvc;
+	
+	@MockBean
+	private UserService userService;
+	
+	@Test
+	public void getAUser() {
+		
+		//mock the data return by the user service class
+		
+		                    
+		
+		
+	}
+
+}

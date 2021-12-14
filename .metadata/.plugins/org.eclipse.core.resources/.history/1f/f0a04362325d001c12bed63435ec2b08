@@ -1,0 +1,37 @@
+package com.project2.mediciERS;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Before;
+import org.junit.jupiter.api.Test;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+import com.project2.mediciERS.entity.User;
+
+public class UserControllerTest extends AbstractTest{
+	
+	@Override
+	@Before
+	public void setUp() {
+		super.setUp();
+	}
+	@Test
+	   public void validateUser() throws Exception {
+	      String uri = "users/login";
+	      User user = new User();
+	      user.setUserId(1);
+	      user.setUserPassword("123456");
+	      String inputJson = super.mapToJson(user);
+	      MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+	         .contentType(MediaType.APPLICATION_JSON_VALUE)
+	         .content(inputJson)).andReturn();
+	      
+	      int status = mvcResult.getResponse().getStatus();
+	      assertEquals(201, status);
+	      String content = mvcResult.getResponse().getContentAsString();
+	      assertEquals(content, "Login successfull");
+	   }
+
+}
